@@ -1,11 +1,7 @@
 Español:
 
-- Pulir la funcion DEB_PROBE, haciendola mas sencilla y facil de leer.
-
 - Externalizar los mensajes, estableciendo deteccion de idioma del Linux en cuestion.
 
 English:
-
-- To polish the DEB_PROBE function, making it more simple and easier to read.
 
 - Externalize the messages, establishing language detection of the Linux in matter.
