@@ -27,22 +27,135 @@
 
 #include <string.h>
 #include <stdlib.h>
-#include <ctype.h> 
-#define WINSTALL_STRING_COUNTER 10000
+#include <ctype.h>
+//#include "winstall-messages.c"
 
-void winstall(char* argument);
-void DPKG_INSTALL(char* webaddress);
-int DIR_PROBE(char * dir);
-void WGET_DOWNLOAD(char* webaddress);
-int DEB_PROBE(char* debpackage);
+void winstall(char *argument);
+void DPKG_INSTALL(char *webaddress);
+int DIR_PROBE(char *dir);
+void WGET_DOWNLOAD(char *webaddress);
+int DEB_PROBE(char *webaddress);
 
-void winstall(char* argument)
+int DEB_PROBE(char *webaddress)
 {
-	if(strcmp("--version",argument)==0)/*para verificar la version*/
+	char DPKG_pkg[WINSTALL_STRING_COUNTER];//for the package.deb
+	char DEB_IN[WINSTALL_STRING_COUNTER];	
+	char DEB_CMP[]="deb";
+	int loopy, chari, counter,j;
+
+	counter=strlen(webaddress);
+	DPKG_pkg[0]='\0';
+	DEB_IN[0]='\0';
+
+	for(loopy=0;loopy<=counter-1;loopy++)/*encontramos el paquete.deb*/
+	{
+		if(webaddress[loopy]=='/')
+		{
+			chari=loopy+1;
+		}
+	}
+	printf("\n\n");
+
+	for(loopy=chari,j=0;loopy<=counter-1;loopy++,j++)/*CREAMOS EL PAQUETE.deb*/
+	{
+		strcpy(&DPKG_pkg[j],&webaddress[loopy]);
+	}
+
+	counter=strlen(DPKG_pkg);//reciclamos la variable counter
+
+	for(loopy=0;loopy<=counter-1;loopy++)/*encontramos el paquete.deb*/
+	{
+		if(DPKG_pkg[loopy]=='.')
+		{
+			chari=loopy+1;
+		}
+	}
+
+	printf("\n\n");
+
+	for(loopy=chari,j=0;loopy<=counter-1;loopy++,j++)/*CREAMOS EL deb DE COMPARACION*/
+	{
+		strcpy(&DEB_IN[j],&DPKG_pkg[loopy]);
+	}
+
+	for(j = 0; DEB_IN[j]; j++)
+	{
+		DEB_IN[j] = tolower(DEB_IN[j]);
+	}
+
+	if (strcmp(DEB_CMP,DEB_IN)==0)
+	{
+		PKG_fnd(DPKG_pkg);
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
+}
+
+int DIR_PROBE(char *dir)
+{
+	char TEST_HTTP[]="http";
+	char TEST_FTP[]="ftp:";
+	char TEMP[3];
+	int counter=0;
+	int loopy;
+
+	for(loopy=0;loopy<=3;loopy++)
+	{
+		TEMP[loopy]=dir[loopy];
+	}
+	TEMP[loopy]='\0';
+
+	for(loopy=0; TEMP[loopy]; loopy++)
+	{
+		TEMP[loopy] = tolower(TEMP[loopy]); /*we validate the link protocol*/
+	}
+
+	if(strcmp(TEST_HTTP,TEMP)==0)
+	{
+		printf("\x1b[1;32mServidor \x1b[1;37mHTTP/HTTPS \x1b[1;32mReconocido.\x1b[0;0m");
+		return 0;
+	}
+	else if(strcmp(TEST_FTP,TEMP)==0)
+	{
+		printf("\x1b[1;32mServidor \x1b[1;37mFTP \x1b[1;32mReconocido\x1b[0;0m");
+		return 0;
+	}
+	else
+	{
+		printf("\x1b[1;31mERROR\x1b[0;0m\n\n");
+		return 1;
+	}
+}
+
+void WGET_DOWNLOAD(char *webaddress)
+{
+	char WGET_DWLD[WINSTALL_STRING_COUNTER];
+	char WGET_CMD[]="wget ";
+	int j,i;
+
+	for(j=0;j<=4;j++)
+	{
+		strcpy(&WGET_DWLD[j],&WGET_CMD[j]);
+	}
+
+	for(i=0,j=5;i<=strlen(webaddress)-1;j++,i++)
+	{
+		strcpy(&WGET_DWLD[j],&webaddress[i]);
+	}
+	system(WGET_DWLD);
+}
+
+void winstall(char *argument)
+{
+	int i,j;
+	if(strcmp("--version",argument)==0||strcmp("-v",argument)==0)/*para verificar la version*/
 	{
 		WINSTALL_VER();
 	}
-	else if(strcmp("--about",argument)==0)/*para verificar la version*/
+	else if(strcmp("--about",argument)==0||strcmp("-a",argument)==0)/*para verificar la version*/
 	{
 		WINSTALL_ABT();
 	}
@@ -68,11 +181,12 @@ void winstall(char* argument)
 		else
 		{
 			DIR_PROBE_ERROR();
+			exit(0);
 		}
 	}
 }
 
-void DPKG_INSTALL(char* webaddress)
+void DPKG_INSTALL(char *webaddress)
 {
 	int counter, loopy, chari,j,i;
 	char DPKG_pkg[WINSTALL_STRING_COUNTER];//for the package.deb
@@ -110,116 +224,4 @@ void DPKG_INSTALL(char* webaddress)
 	system(DPKG_INSTALLING); /*Here we call to dpkg installer with the full command*/
 
 	printf("\n\n");
-}
-
-int DIR_PROBE(char *dir)
-{
-	char TEST_HTTP[]="http";
-	char TEST_FTP[]="ftp:";
-	char TEMP[3];
-	int counter=0;
-	int loopy;
-
-	for(loopy=0;loopy<=3;loopy++)
-	{
-		TEMP[loopy]=dir[loopy];
-	}
-	TEMP[loopy]='\0';
-
-	for(loopy=0; TEMP[loopy]; loopy++)
-	{
-		TEMP[loopy] = tolower(TEMP[loopy]); /*we validate the link protocol*/
-	}
-
-	if(strcmp(TEST_HTTP,TEMP)==0)
-	{
-		printf("Servidor HTTP/HTTPS Reconocido, se procede a la descarga");
-		return 0;
-	}
-	else if(strcmp(TEST_FTP,TEMP)==0)
-	{
-		printf("Servidor FTP Reconocido, se procede a la descarga");
-		return 0;
-	}
-	else
-	{
-		printf("ERROR\n\n");
-		return 1;
-	}
-}
-
-void WGET_DOWNLOAD(char* webaddress)
-{
-	char WGET_DWLD[WINSTALL_STRING_COUNTER];
-	char WGET_CMD[]="wget ";
-	int j,i;
-
-	for(j=0;j<=4;j++)
-	{
-		strcpy(&WGET_DWLD[j],&WGET_CMD[j]);
-	}
-
-	for(i=0,j=5;i<=strlen(webaddress)-1;j++,i++)
-	{
-		strcpy(&WGET_DWLD[j],&webaddress[i]);
-	}
-	system(WGET_DWLD);
-}
-
-int DEB_PROBE(char* debpackage) /*it needs to be polish, but works anyway*/
-{
-	char DPKG_pkg[WINSTALL_STRING_COUNTER];//for the package.deb
-	char DEB_IN[WINSTALL_STRING_COUNTER];	
-	char DEB_CMP[]="deb";
-	int loopy, chari, counter,j;
-
-	counter=strlen(debpackage);
-	DPKG_pkg[0]='\0';
-	DEB_IN[0]='\0';
-
-	for(loopy=0;loopy<=counter-1;loopy++)/*encontramos el paquete.deb*/
-	{
-		if(debpackage[loopy]=='/')
-		{
-			chari=loopy+1;
-		}
-	}
-	printf("\n\n");
-
-	for(loopy=chari,j=0;loopy<=counter-1;loopy++,j++)/*CREAMOS EL PAQUETE.deb*/
-	{
-		strcpy(&DPKG_pkg[j],&debpackage[loopy]);
-	}
-
-	counter=strlen(DPKG_pkg);//reciclamos la variable counter
-
-	for(loopy=0;loopy<=counter-1;loopy++)/*encontramos el paquete.deb*/
-	{
-		if(DPKG_pkg[loopy]=='.')
-		{
-			chari=loopy+1;
-		}
-	}
-
-	printf("\n\n");
-
-	for(loopy=chari,j=0;loopy<=counter-1;loopy++,j++)/*CREAMOS EL deb DE COMPARACION*/
-	{
-		strcpy(&DEB_IN[j],&DPKG_pkg[loopy]);
-	}
-
-	for(j = 0; DEB_IN[j]; j++)
-	{
-		DEB_IN[j] = tolower(DEB_IN[j]);
-	}
-
-	if (strcmp(DEB_CMP,DEB_IN)==0)
-	{
-		printf("Encontrado %s", DPKG_pkg);
-		return 0;
-	}
-	else
-	{
-		return 1;
-	}
 }
