@@ -25,11 +25,6 @@ otros argumentos para make:
 
 >sudo make uninstall	➳ desinstala el proyecto instalado (Requiere privilegios de ROOT)
 
->sudo make deb	➳ Compila el proyecto, y crea un instalador .deb para ser instalado externamente con dpkg (Requiere privilegios de ROOT)
-
-DEB:
-
-Cabe señalar, que en la carpeta Deb de este repositorio se encuentra el instalador .deb de Winstall.
 
 MODO DE USO:
 
@@ -71,11 +66,6 @@ another make arguments:
 
 >sudo make uninstall	➳ Just uninstall winstall from the system (ROOT privileges are required)
 
->sudo make deb	➳ Compile the proyect, and makes a .deb package to install Winstall with dpkg (ROOT privileges are required)
-
-DEB:
-
-should be noted that in the Deb folder of this repositorie, u can found a .deb installer of Winstall.
 
 HOW TO USE:
 
