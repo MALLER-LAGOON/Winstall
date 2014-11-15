@@ -44,6 +44,7 @@ void WINSTALL_VER(void);
 void WINSTALL_ABT(void);
 void ROOT_ADV(void);
 void PKG_fnd(char *DPKG_pkg);
+void DEV_MSG(void);
 
 void PKG_fnd(char *DPKG_pkg)
 {
@@ -63,14 +64,14 @@ void WINSTALL_HLP(void)
 		   "\x1b[1;34m===========\x1b[0;0m\n"
 		   "\n\n"
 		   "al igual que con wget, tan solo es necesario colocar la direccion web para realizar la descarga.\n"
-	       "\n"
-	       "este programa tan solo gestiona la descarga con wget y posterior instalacion con dpkg de los paquetes descargados, por lo que requiere privilegios de administrador.\n"
-	       "\n\n"
-	       "\x1b[1;33mOpciones:\t \x1b[1;32mwinstall\x1b[1;31m [Opcion]\x1b[0;0m\n"
-	       "\x1b[1;34m========\x1b[0;0m\n\n"
-	       "\x1b[0;33m--about \x1b[1;37mo \x1b[0;33m-a:\x1b[0;0m:\x1b[0;0m\t\t\tinformacion acerca de la aplicacion.\n"
-	       "\x1b[0;33m--help \x1b[1;37mo \x1b[0;33m-h:\x1b[0;0m\t\t\tmuestra esta pagina de informaciones.\n"
-	       "\x1b[0;33mhttp://Direccion-Web.com:\x1b[0;0m\tcorresponde a la direccion web del paquete .deb a instalar\n\n\n");
+		   "\n"
+		   "este programa tan solo gestiona la descarga con wget y posterior instalacion con dpkg de los paquetes descargados, por lo que requiere privilegios de administrador.\n"
+		   "\n\n"
+		   "\x1b[1;33mOpciones:\t \x1b[1;32mwinstall\x1b[1;31m [Opcion]\x1b[0;0m\n"
+		   "\x1b[1;34m========\x1b[0;0m\n\n"
+		   "\x1b[0;33m--about \x1b[1;37mo \x1b[0;33m-a:\x1b[0;0m:\x1b[0;0m\t\t\tinformacion acerca de la aplicacion.\n"
+		   "\x1b[0;33m--help \x1b[1;37mo \x1b[0;33m-h:\x1b[0;0m\t\t\tmuestra esta pagina de informaciones.\n"
+		   "\x1b[0;33mhttp://Direccion-Web.com:\x1b[0;0m\tcorresponde a la direccion web del paquete .deb a instalar\n\n\n");
 }
 
 void DIR_PROBE_ERROR(void)
@@ -100,4 +101,9 @@ void WINSTALL_ABT(void)
 void ROOT_ADV(void)
 {
 	printf("\x1b[1;31m\tSe requieren privilegios de ROOT\x1b[0;0m\n\n");
+}
+
+void DEV_MSG(void)
+{
+	printf("\t\t\x1b[1;33mESTA OPCION AUN ESTA EN DESARROLLO!!!\x1b[0;0m\n\n");
 }

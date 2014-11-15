@@ -155,13 +155,18 @@ void winstall(char *argument)
 	{
 		WINSTALL_VER();
 	}
-	else if(strcmp("--about",argument)==0||strcmp("-a",argument)==0)/*para verificar la version*/
+	else if(strcmp("--about",argument)==0||strcmp("-a",argument)==0)/*acerca de*/
 	{
 		WINSTALL_ABT();
 	}
-	else if(strcmp("--help",argument)==0||strcmp("-h",argument)==0)/*para verificar la version*/
+	else if(strcmp("--help",argument)==0||strcmp("-h",argument)==0)/*para mostrar ayuda*/
 	{
 		WINSTALL_HLP();
+	}
+	else if(strcmp("--gui",argument)==0)/*Activa interfaz GTK+ de Winstall*/
+	{
+		DEV_MSG();
+		exit(0);
 	}
 	else
 	{

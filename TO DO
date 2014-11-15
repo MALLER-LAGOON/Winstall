@@ -1,7 +1,11 @@
 Español:
 
+- Realizar una GUI para llamados directos desde la interfaz grafica
 - Externalizar los mensajes, estableciendo deteccion de idioma del Linux en cuestion.
+- Generar un reconocedor de dependencias para los paquetes .deb y verificar si las dependencias se encuentran satisfechas.
 
 English:
 
+- Create a GUI to generate a direct call from the graphic interface
 - Externalize the messages, establishing language detection of the Linux in matter.
+- Create a dependencies recongizer for the .deb packages, and verify if the dependencies are satisfied.
