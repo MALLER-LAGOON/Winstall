@@ -48,7 +48,7 @@ void DEV_MSG(void);
 
 void PKG_fnd(char *DPKG_pkg)
 {
-	printf("\x1b[1;32mEncontrado \x1b[1;33m%s, \x1b[1;32mse procede a la instalacion\x1b[0;0m", DPKG_pkg);
+	printf("\x1b[1;32mEncontrado: \x1b[1;33m%s\x1b[1;32m, se procede a la instalacion\x1b[0;0m", DPKG_pkg);
 }
 
 void winstall_error(void) /*mensaje de error*/

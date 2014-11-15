@@ -115,17 +115,17 @@ int DIR_PROBE(char *dir)
 
 	if(strcmp(TEST_HTTP,TEMP)==0)
 	{
-		printf("\x1b[1;32mServidor \x1b[1;37mHTTP/HTTPS \x1b[1;32mReconocido.\x1b[0;0m");
+		printf("\x1b[1;32mProtocolo \x1b[1;37mHTTP/HTTPS \x1b[1;32mReconocido.\x1b[0;0m");
 		return 0;
 	}
 	else if(strcmp(TEST_FTP,TEMP)==0)
 	{
-		printf("\x1b[1;32mServidor \x1b[1;37mFTP \x1b[1;32mReconocido\x1b[0;0m");
+		printf("\x1b[1;32mProtocolo \x1b[1;37mFTP \x1b[1;32mReconocido\x1b[0;0m");
 		return 0;
 	}
 	else
 	{
-		printf("\x1b[1;31mERROR\x1b[0;0m\n\n");
+		printf("\x1b[1;31mERROR Protocolo no reconocido\x1b[0;0m\n\n");
 		return 1;
 	}
 }
