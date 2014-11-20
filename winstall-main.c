@@ -34,6 +34,7 @@
 
 int main(int argc,char* argv[])
 {
+	int loopy;
 	printf("\n");
 	if(getuid()!=0) /*ROOT Verification*/
 	{
@@ -49,7 +50,10 @@ int main(int argc,char* argv[])
 		}
 		else
 		{
-			winstall(argv[1]);
+			for(loopy=0;loopy<argc;loopy++)
+			{
+				winstall(argv[loopy+1]);
+			}
 			return(0);
 		}
 	}

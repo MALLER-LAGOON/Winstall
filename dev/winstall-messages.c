@@ -89,7 +89,7 @@ void DEB_PROBE_ERROR(void)
 
 void WINSTALL_VER(void)
 {
-	printf("\t\t\x1b[1;33mWinstall\x1b[0;0m \x1b[1;32mv0.6\x1b[0;0m\n\n");
+	printf("\t\t\x1b[1;33mWinstall\x1b[0;0m \x1b[1;32mv0.6.5\x1b[0;0m\n\n");
 }
 
 void WINSTALL_ABT(void)

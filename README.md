@@ -32,6 +32,10 @@ se utiliza igual que wget, pero con privilegios de ROOT:
 
 >sudo winstall http://DIRECCION-WEB-DEL-PAQUETE.deb  (Requiere privilegios de ROOT)
 
+Tambien permite la descarga de varios paquetes de manera simultanea:
+
+>sudo winstall http://direccion.web/paquete1.deb http://direccion.web/paquete2.deb ... etc.
+
 solamente sirve para realizar descargas de paquetes .deb, dado que para las otras descargas se tiene directamente wget.
 por ahora Winstall solamente tiene soporte para los protocolos ftp, http y https.
 
@@ -72,6 +76,10 @@ HOW TO USE:
 is the same as wget, but with ROOT privileges:
 
 >sudo winstall http://WEB-ADDRESS-OF-THE-PACKAGE.deb (ROOT privileges are required)
+
+Also allows multiple package download at the same time like real dpkg:
+
+>sudo winstall http://web.address/package1.deb http://web.address/package2.deb ... etc.
 
 It just allows to download .deb packages, since wget can do other kind of downloads.
 by now, Winstall just supports ftp, http and https protocols.
