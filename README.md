@@ -25,6 +25,12 @@ otros argumentos para make:
 
 >sudo make uninstall	➳ desinstala el proyecto instalado (Requiere privilegios de ROOT)
 
+DEB:
+
+Cabe señalar, que en la carpeta Deb de este repositorio se encuentra el instalador .deb de Winstall.
+
+<code>Se ha determinado una convención propia del proyecto, en la cual se establece que el paquete.deb que tenga su primera letra mayúscula corresponde a la versión mas actual, que se corresponde con las modificaciones publicadas del codigo fuente.
+Las versiones anteriores se renombran con todas sus letras en minusculas, con su numero de version sin puntos de separación</code>
 
 MODO DE USO:
 
@@ -32,7 +38,7 @@ se utiliza igual que wget, pero con privilegios de ROOT:
 
 <code>sudo winstall http://DIRECCION-WEB-DEL-PAQUETE.deb</code>  (Requiere privilegios de ROOT)
 
-Tambien permite la descarga de varios paquetes de manera simultanea:
+Tambien permite la descarga de varios paquetes de manera simultanea, tal como dpkg:
 
 <code>sudo winstall http://direccion.web/paquete1.deb http://direccion.web/paquete2.deb ...</code> etc.
 
@@ -45,6 +51,7 @@ Winstall es un proyecto de caracter opensource, sometido a la normativa de GPLv2
 
 este no es un proyecto muy ambicioso, solamente busca generar comodidad en la instalacion de los paquetes .deb, el codigo utilizado para poder realizar este programa es muy sencillo, y las funciones empleadas han sido comodamente separadas en librerias adecuadamente nombradas, de manera que sea facil de entender y poder modificar el codigo.
 cualquier sugerencia o actualizacion, no duden en realizarla, pero por favor en lo posible muestren algo de codigo en sus sugerencias.
+
 
 ENGLISH:
 
@@ -70,6 +77,12 @@ another make arguments:
 
 >sudo make uninstall	➳ Just uninstall winstall from the system (ROOT privileges are required)
 
+DEB:
+
+should be noted that in the Deb folder of this repositorie, u can found a .deb installer of Winstall.
+
+<code>It has given the project its own convention, which states that the package.deb having its first capital letter corresponding to the most current version, which corresponds to the latest amendments published the source code.
+Previous versions are renamed with all lowercase letters with its version number without breakpoints.</code>
 
 HOW TO USE:
 

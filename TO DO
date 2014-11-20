@@ -1,5 +1,6 @@
 Español:
 
+- Si se han ingresado varias direcciones web, realizar las descargas de cada paquete de manera independiente, y luego realizar la instalacion en 1 solo paso.
 - Realizar una GUI para llamados directos desde la interfaz grafica
 - Crear un formato de archivo externo para bajar una lista.
 - Externalizar los mensajes, estableciendo deteccion de idioma del Linux en cuestion.
@@ -7,6 +8,7 @@ Español:
 
 English:
 
+- If multiple download addresses have been entered, it must to download every package separately, and then do the instalation on just 1 step.
 - Create a GUI to generate a direct call from the graphic interface
 - Create a external file format to download a list of url
 - Externalize the messages, establishing language detection of the Linux in matter.
